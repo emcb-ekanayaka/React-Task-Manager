@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Print It : Employee Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+        .modal-dialog{
+            max-width: 1200px;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="employee.js"></script>
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <link href='resources/style/digitalclock.css' rel='stylesheet'/>
+    <script src='digitalclock.js'></script>
+    <script src="resources/script/sweetalert.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" class="scrollStyle">
+        <div id="dismiss" style="background-color:rgb(100,102,102)">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div  class="sidebar-header text-center" style="background-color:rgba(115,134,213,0)" >
+            <div class="row">
+                <div class="col-sm-12 text-center"><img src="resources/image/logo_printit.png" width="100%" height="100%"></div>
+            </div>
+
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a class="text-center" style="background-color: #4187de; color: #ffffff;font-weight: bold">
+                    Customized gift store in <br> Sri Lanka
+                </a>
+            </li>
+
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Sales
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer">Customer</a>
+                    </li>
+                    <li class="CUSTOMERPAYMENT">
+                        <a href="http://localhost:8080/customerpayment">Customer Payment</a>
+                    </li>
+                    <li class="CUSTOMERORDER">
+                        <a href="http://localhost:8080/customerorder">Customer Order</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRNRETURN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/supplierpayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#productsubmainu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Production
+                </a>
+                <ul class="collapse list-unstyled" id="productsubmainu">
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/productionorder">Production</a>
+                    </li>
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/productionorder"> Production Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/dailyproduction"> Daily Production Management </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="PATIENT">
+                        <a href="http://localhost:8080/product"> Product </a>
+                    </li>
+                    <li class="APPOINTMENT">
+                        <a href="http://localhost:8080/productdesigntype"> Product Design Type </a>
+                    </li>
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/productcost"> Product Cost Analysis </a>
+                    </li>
+
+                    <li class="APPOINTMENT">
+                        <a href="http://localhost:8080/material"> Material </a>
+                    </li>
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/materialinventory"> Inventory </a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/reportcustomertypes">Customer Type</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportalldailyproductqty">All Daily Product</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportdailyproductqty">Daily Product</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportexpenses">Expenses</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportincome">Income</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportprofit">Profit</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportsupplierarrest">Supplier Arrest</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav id="ncolor" class="navbar navbar-expand-lg navbar-dark justify-content-between">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+                    <!--Home Link-->
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <!--Quick access-->
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown">
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i
+                                class="fa fa-th"></i> </a>
+                        <div class="dropdown-menu">
+
+                            <ul class="navbar-nav"
+                                style="margin: -10px -10px -10px -1px; background-color: #a7e9ff;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/employee')">
+                                        <div id="emplyee" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Empolyee</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/user')">
+                                        <div id="user" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">User</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/privilage')">
+                                        <div id="privilage" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Privilege</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+
+                </div>
+
+                <div class="row text-center">
+                    <span><img src="resources/image/tab_logo.png" style="height: 50px; width: 65px; padding-right: 15px"></span>
+                    <span><h1 class="text-white font-weight-bold pt-0 glow"> Print It Private Limited </h1></span>
+
+                    <!--digital clock start-->
+                    <span>
+                            <div class="datetime">
+                                <div class="date">
+                                    <span id="dayname">Day</span>,
+                                    <span id="month">Month</span>
+                                    <span id="daynum">00</span>,
+                                    <span id="year">Year</span>
+                                </div>
+                                <div class="time">
+                                    <span id="hour">00</span>:
+                                    <span id="minutes">00</span>:
+                                    <span id="seconds">00</span>
+                                    <span id="period">AM</span>
+                                </div>
+                            </div>
+                    </span>
+                    <!--digital clock end-->
+                </div>
+                <!--<div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as : <span id="spnDesignation"> </span></p>
+                </div>-->
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="#" onclick="btnSignoutMC()"> <i class="fas fa-sign-out-alt"></i></a>
+                        <span></span>
+                    </button>
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="text-left cardhead">
+                                                <h2 style="color: white">Employee Management</h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 text-right">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn commonadd" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                Add Employee
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--table area-->
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive mt-2" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Number', search: true, datatype: 'text', property: 'number'},
+                                            {name: 'Name', search: true, datatype: 'text', property: 'callingname'},
+                                            {name: 'Mobile', search: true, datatype: 'text', property: 'mobile'},
+                                            {
+                                                name: 'Designation',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'designationId.name'
+                                            },
+                                            {
+                                                name: 'Status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'employeestatusId.name'
+                                            }
+                                        ];
+                                        table("tableParent", "tblEmployee", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<table id="printformtable" class="mt-5" style="display: none">
+    <tbody>
+    <tr>
+        <td>Employee Number :</td>
+        <td id="x"><input type="text" id="tdnum" style="border: 0px solid; border-color: white"></td>
+    </tr>
+    <tr>
+        <td>Employee Full Name :</td>
+        <td id="tdfname"></td>
+    </tr>
+    <tr>
+        <td>Employee Calling Name :</td>
+        <td id="tdcname"></td>
+    </tr>
+    <tr>
+        <td>Employee Nic :</td>
+        <td id="tdnic"></td>
+    </tr>
+    <tr>
+        <td>Employee Gender :</td>
+        <td id="tdgender"></td>
+    </tr>
+    <tr>
+        <td>Employee DOB :</td>
+        <td id="tddob"></td>
+    </tr>
+    <tr>
+        <td>Employee Civil Status :</td>
+        <td id="tdcvstatus"></td>
+    </tr>
+    <tr>
+        <td>Employee Address :</td>
+        <td id="tdaddress"></td>
+    </tr>
+    <tr>
+        <td>Employee Photo :</td>
+        <td><img id="tdphoto" width="100px" height="100px"></td>
+    </tr>
+    <tr>
+        <td>Employee Mobile Nmber :</td>
+        <td id="tdmobile"></td>
+    </tr>
+    <tr>
+        <td>Employee Land Number :</td>
+        <td id="tdland"></td>
+    </tr>
+    <tr>
+        <td>Employee Designation :</td>
+        <td id="tddesg"></td>
+    </tr>
+    <tr>
+        <td>Employee Assign Date :</td>
+        <td id="tdasdate"></td>
+    </tr>
+    <tr>
+        <td>Employee Status :</td>
+        <td id="tdestatus"></td>
+    </tr>
+    <tr>
+        <td>Employee Description :</td>
+        <td id="tddesc"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="overlay"></div>
+
+<!-- Add Employee Form Modal -->
+<div style="background-color: rgba(68,96,201,0.26)" data-backdrop="static" class="modal fade bd-example-modal-lg" id="formmodel" tabindex="-1" role="dialog" aria-labelledby="AddformmodelModal" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="background-color: rgb(255,255,255)">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: #00126d" id="AddformmodelModal">Add Employee </h2>
+                <button type="button" class="close" onclick="closeviewmodule()">
+                    <span aria-hidden="true" >&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--form area-->
+                <div class="row p-3" style="background-color: #DADDE1" id="divFrom">
+                    <div class="col-md-12">
+                        <form class="" id="employeeform" onsubmit="return false">
+
+
+                            <div class="row">
+                                <div class="col-md-12 pull-right text-right">
+                                    <p class="font-weight-bold text-dark"><span
+                                            style="color:red; font-size:24px"><b>*</b></span> Required</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="" for="txtNumber"> <b>Employee Number : <span
+                                                        style="color:red; font-size:24px">*</span></b></label>
+                                                <input type="text" id="txtNumber" placeholder="Enter Number Here"
+                                                       class="form-control" required disabled/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="" for="txtCallingname"> <b>Employee Calling Name :
+                                                    <span style="color:red; font-size:24px">*</span></b></label>
+                                                <input type="text" id="txtCallingname" placeholder="eg :- Johne"
+                                                       class="form-control" required
+                                                       data-toggle="tooltip" data-placement="bottom"
+                                                       title="eg :- Johne"
+                                                       onkeyup="textFieldBinder(txtCallingname,'^([A-Z][a-z]+)$','employee','callingname','oldemployee')"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="" for="txtFullname"> <b>Employee Full Name : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <textarea id="txtFullname" placeholder="Enter Full Name Here"
+                                                  class="form-control" required
+                                                  onkeyup="textFieldBinder(txtFullname,'^([a-zA-Z]+|[a-zA-Z]+\\s{1}[a-zA-Z]{1,}|[a-zA-Z]+\\s{1}[a-zA-Z]{3,}\\s{1}[a-zA-Z]{1,})$','employee','fullname','oldemployee')">
+                                                    </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="print-form">
+                                        <script>
+                                            // (parentid, photofeildId,labletext,lablesize,type, maxsize,datarequerd,object, property , oldobject )
+                                            fileChooser('print-form', 'flePhoto', 'Photo', 4, ['.jpg', '.png'], 5, true, 'employee', 'photo', 'oldemployee');
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="" for="txtNIC"> <b>Employee NIC : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <input type="text" id="txtNIC"
+                                               placeholder="9 digite plus vVxX or 12 digits"
+                                               class="form-control" required
+                                               data-toggle="tooltip" data-placement="bottom"
+                                               title="9 digite plus vVxX or 12 digits"
+                                               onkeyup="nicTestFieldBinder(txtNIC,'^(([0-9]{9}[vVxX])|([0-9]{12}))$','','','')"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="" for="cmbGender"><b>Gender : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <select id="cmbGender" class="form-control" disabled required
+                                                onchange="comboBoxBinder(cmbGender,'','employee','genderId','oldemployee')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="" for="dteDOBirth"> <b>Birth Date : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <input type="date" id="dteDOBirth" class="form-control" disabled
+                                               required
+                                               onkeyup="textFieldBinder(dteDOBirth,'','employee','dobirth','oldemployee')"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="" for="txtAddress"> <b>Employee Address : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <textarea id="txtAddress" placeholder="Enter Address Here"
+                                                  class="form-control" required
+                                                  onkeyup="textFieldBinder(txtAddress,'^([\\w\\/\\-,\\s]{2,})$','employee','address','oldemployee')"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="" for="txtDescription"> <b>Employee Description : </b></label>
+                                        <textarea id="txtDescription"
+                                                  placeholder="Enter Description Here (optional)"
+                                                  class="form-control"
+                                                  onkeyup="textFieldBinder(txtDescription,'^.*$','employee','description','oldemployee')"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" for="txtMobile"> <b>Employee Mobile-Number : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <input type="text" id="txtMobile"
+                                               placeholder="Enter Mobile-Number Here"
+                                               class="form-control" required
+                                               onkeyup="textFieldBinder(txtMobile,'^0\\d{9}$','employee','mobile','oldemployee')"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" for="txtLand"> <b>Employee Land-Number :<span
+                                                style="visibility: hidden; font-size:24px">*</span>
+                                        </b></label>
+                                        <input type="text" id="txtLand"
+                                               placeholder="Enter Land-Number Here (optional)"
+                                               class="form-control"
+                                               onkeyup="textFieldBinder(txtLand,'^0\\d{9}$','employee','land','oldemployee')"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" for="cmbCivilstatus"><b>Civilstatus : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <select id="cmbCivilstatus" class="form-control" required
+                                                onchange="comboBoxBinder(cmbCivilstatus,'','employee','civilstatusId','oldemployee')"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" for="cmbDesignation"><b> Employee Designation :
+                                            <span style="color:red; font-size:24px">*</span></b></label>
+                                        <select id="cmbDesignation" class="form-control" required
+                                                onchange="comboBoxBinder(cmbDesignation,'','employee','designationId','oldemployee')"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="" for="dteDOAssignment"> <b>Employee Assignment Date :
+                                            <span style="color:red; font-size:24px">*</span></b></label>
+                                        <input type="date" id="dteDOAssignment" class="form-control"
+                                               required
+                                               onkeyup="textFieldBinder(dteDOAssignment,'','employee','doassignment','oldemployee')"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="" for="cmbEmployeestatus"><b>Employee Status : <span
+                                                style="color:red; font-size:24px">*</span></b></label>
+                                        <select id="cmbEmployeestatus" class="form-control" required
+                                                onchange="comboBoxBinder(cmbEmployeestatus,'','employee','employeestatusId','oldemployee')"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="text-right">
+                                <button class="btn btn-outline-info " type="button" id="btnClear" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn btn-outline-warning" type="submit" id="btnUpdate"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                <button class="btn btn-outline-success" style="width: 25%" type="submit" id="btnAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

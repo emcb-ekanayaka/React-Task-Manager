@@ -1,0 +1,39 @@
+
+.datetime{
+    color: #fff;
+    background: rgba(16, 16, 30, 0);
+    font-family: "Segoe UI", sans-serif;
+    width: 260px;
+    padding: 4px 6px;
+    border-radius: 0px;
+}
+.date{
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.time{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time span:not(:last-child){
+    position: relative;
+    margin: 0 6px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.time span:last-child{
+    background: #2E94E3;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 5px;
+    border-radius: 3px;
+}

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Print It : Daily Production Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #199bd6;
+        }
+        #rowtblview{
+            max-width: 600px;
+        }
+        .modal-dialog{
+            max-width: 800px;
+            padding-left: 17px;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="dailyproduction.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <link href='resources/style/digitalclock.css' rel='stylesheet'/>
+    <script src='digitalclock.js'></script>
+    <script src="resources/script/sweetalert.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" class="scrollStyle">
+        <div id="dismiss" style="background-color:rgb(100,102,102)">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div  class="sidebar-header text-center" style="background-color:rgba(115,134,213,0)" >
+            <div class="row">
+                <div class="col-sm-12 text-center"><img src="resources/image/logo_printit.png" width="100%" height="100%"></div>
+            </div>
+
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a class="text-center" style="background-color: #4187de; color: #ffffff;font-weight: bold">
+                    Customized gift store in <br> Sri Lanka
+                </a>
+            </li>
+
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Sales
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer">Customer</a>
+                    </li>
+                    <li class="CUSTOMERPAYMENT">
+                        <a href="http://localhost:8080/customerpayment">Customer Payment</a>
+                    </li>
+                    <li class="CUSTOMERORDER">
+                        <a href="http://localhost:8080/customerorder">Customer Order</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRNRETURN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/supplierpayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#productsubmainu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Production
+                </a>
+                <ul class="collapse list-unstyled" id="productsubmainu">
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/productionorder">Production</a>
+                    </li>
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/productionorder"> Production Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/dailyproduction"> Daily Production Management </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="PATIENT">
+                        <a href="http://localhost:8080/product"> Product </a>
+                    </li>
+                    <li class="APPOINTMENT">
+                        <a href="http://localhost:8080/productdesigntype"> Product Design Type </a>
+                    </li>
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/productcost"> Product Cost Analysis </a>
+                    </li>
+
+                    <li class="APPOINTMENT">
+                        <a href="http://localhost:8080/material"> Material </a>
+                    </li>
+                    <li class="PRESCRIPTION">
+                        <a href="http://localhost:8080/materialinventory"> Inventory </a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/reportcustomertypes">Customer Type</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportalldailyproductqty">All Daily Product</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportdailyproductqty">Daily Product</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportexpenses">Expenses</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportincome">Income</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportprofit">Profit</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/reportsupplierarrest">Supplier Arrest</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-circle"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav id="ncolor" class="navbar navbar-expand-lg navbar-dark  justify-content-between">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown">
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i
+                                class="fa fa-th"></i> </a>
+                        <div class="dropdown-menu">
+
+                            <ul class="navbar-nav"
+                                style="margin: -10px -10px -10px -1px; background-color: #a7e9ff;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/productionorder')">
+                                        <div id="productionorder" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Production Order</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/productionordercomfirm')">
+                                        <div id="productionordercofirm" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Confirm</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/dailyproduction')">
+                                        <div id="production1" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Daily Product</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+
+                </div>
+
+                <div class="row text-center">
+                    <span><img src="resources/image/tab_logo.png" style="height: 50px; width: 65px; padding-right: 15px"></span>
+                    <span><h1 class="text-white font-weight-bold pt-0 glow"> Print It Private Limited </h1></span>
+
+                    <!--digital clock start-->
+                    <span>
+                            <div class="datetime">
+                                <div class="date">
+                                    <span id="dayname">Day</span>,
+                                    <span id="month">Month</span>
+                                    <span id="daynum">00</span>,
+                                    <span id="year">Year</span>
+                                </div>
+                                <div class="time">
+                                    <span id="hour">00</span>:
+                                    <span id="minutes">00</span>:
+                                    <span id="seconds">00</span>
+                                    <span id="period">AM</span>
+                                </div>
+                            </div>
+                    </span>
+                    <!--digital clock end-->
+                </div>
+                <!--<div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as : <span id="spnDesignation"> </span></p>
+                </div>-->
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="#" onclick="btnSignoutMC()"> <i class="fas fa-sign-out-alt"></i></a>
+                        <span></span>
+                    </button>
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+
+                        <div class="card-body">
+
+                            <div class="row mb-2">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="text-left cardhead">
+                                                <h2 style="color: white">Daily Production Management</h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 text-right">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn commonadd" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                Add Daily Production
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Table-->
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive mt-2" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Product Name', search: true, datatype: 'text', property: 'product_id.productname'},
+                                            {name: 'Order Quantity', search: true, datatype: 'text', property: 'orderqty'},
+                                            {name: 'Current Completed Qty', search: true, datatype: 'text', property: 'currentcomqty'},
+                                            {
+                                                name: 'Daily Qty',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'dailyqty'
+                                            },
+                                            {
+                                                name: 'Total Completed Qty',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'totalcomqty'
+                                            }
+                                        ];
+                                        table("tableParent", "tbldailyproduct", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Add Daily Production Form Modal -->
+<div style="background-color: rgba(68,96,201,0.26)" data-backdrop="static" class="modal fade bd-example-modal-lg" id="formmodel" tabindex="-1" role="dialog" aria-labelledby="AddformmodelModal" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="background-color: rgb(255,255,255)">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: #00126d" id="AddformmodelModal">Add Daily Production </h2>
+                <button type="button" class="close" onclick="closeviewmodule()">
+                    <span aria-hidden="true" >&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Form-->
+                <div class="row p-3 formcardstyle"  id="divFrom">
+                    <div class="col-md-12 ">
+                        <form class="" id="employeeform" onsubmit="return false">
+
+
+                            <div class="row">
+                                <div class="col-md-12 pull-right text-right">
+                                    <p class="font-weight-bold text-dark"><span
+                                            style="color:red; font-size:24px"><b>*</b></span> Required</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <!--form area-->
+                                <div class="col-lg-12">
+                                    <!--Product / Order Qty / Current Qty-->
+
+                                    <div class="row">
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="" for="cmbproductionorder"> <b>Production Order : <span
+                                                        style="color:red; font-size:15px">*</span>
+                                                </b></label>
+                                                <select  id="cmbproductionorder"
+                                                         onchange="comboBoxBinder(cmbproductionorder,'','dailyproduction','productionorder_id','olddailyproduction')"
+                                                         class="form-control" required></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="" for="cmbproduct"> <b>Product : <span
+                                                        style="color:red; font-size:15px">*</span>
+                                                </b></label>
+                                                <select  id="cmbproduct"
+                                                       onchange="comboBoxBinder(cmbproduct,'','dailyproduction','product_id','olddailyproduction')"
+                                                       class="form-control" required></select>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="" for="txtorderqty"> <b>Order Quantity : <span
+                                                        style="color:red; font-size:15px">*</span></b></label>
+                                                <input type="text" id="txtorderqty" placeholder="Auto Value"
+                                                       onkeyup="textFieldBinder(txtorderqty,'^[0-9]*$','dailyproduction','orderqty','olddailyproduction')"
+                                                       class="form-control" required/>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <div class="form-group">
+                                                <label class="" for="txtcrntqty"> <b>Current Quantity: <span
+                                                        style="color:red; font-size:15px">*</span></b></label>
+                                                <input id="txtcrntqty" type="text" placeholder="Auto Value"
+                                                       onkeyup="textFieldBinder(txtcrntqty,'^[0-9]*$','dailyproduction','currentcomqty','olddailyproduction')"
+                                                        class="form-control" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Daily Qty / Total Qty / Balance Qty  -->
+                                    <div class="row mt-1">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="" for="txtdailyqty"> <b>Daily Quantity : <span
+                                                        style="color:red; font-size:15px">*</span>
+                                                </b></label>
+                                                <input type="text" id="txtdailyqty"
+                                                       onkeyup="textFieldBinder(txtdailyqty,'^[0-9]*$','dailyproduction','dailyqty','olddailyproduction')"
+                                                       class="form-control" placeholder="Enter Here" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+
+                                            <div class="form-group">
+                                                <label class="" for="txttotalqty"> <b>Total Quantity : <span
+                                                        style="color:red; font-size:15px">*</span>
+                                                    <i class="fas fa-question-circle"
+                                                       data-toggle="tooltip" data-placement="right"
+                                                       title=""></i>
+                                                </b></label>
+                                                <input type="text" id="txttotalqty"
+                                                       onkeyup="textFieldBinder(txttotalqty,'^[0-9]*$','dailyproduction','totalcomqty','olddailyproduction')"
+                                                       class="form-control" placeholder="Auto Value" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="" for="txtbalanceqty"> <b>Balance Quantity : <span
+                                                        style="color:red; font-size:15px">*</span>
+                                                </b></label>
+                                                <input type="text" id="txtbalanceqty"
+                                                       onkeyup="textFieldBinder(txtbalanceqty,'^[0-9]*$','dailyproduction','balanceqty','olddailyproduction')"
+                                                       class="form-control" placeholder="Auto Value" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Added Date / Employee  -->
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="" for="cmbaddeddate"> <b>Added Date : <span
+                                                        style="color:red; font-size:15px">*</span></b></label>
+                                                <input  type="date" id="cmbaddeddate"
+                                                        onkeyup="textFieldBinder(cmbaddeddate,'','dailyproduction','addeddate','olddailyproduction')"
+                                                        class="form-control"  required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+
+                                            <div class="form-group">
+                                                <label class="" for="cmbEmployee"> <b>Employee : <span
+                                                        style="color:red; font-size:15px">*</span></b></label>
+                                                <select id="cmbEmployee"
+                                                        onchange="comboBoxBinder(cmbEmployee,'','dailyproduction','employee_id','olddailyproduction')"
+                                                        class="form-control" required></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="text-right">
+                                <button class="btn btn-info " type="button" id="btnClear" style="width: 25%;border-radius: unset">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+
+                                <button class="btn btn-warning" type="submit" id="btnUpdate"
+                                        style="width: 25%;border-radius: unset"> <i class="fas fa-edit mr-2"></i> Update
+                                </button>
+
+                                <button class="btn btn-success" style="width: 25%;border-radius: unset" type="submit" id="btnAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--  Product Row View Modal  -->
+<div class="modal fade bd-example-modal-lg" id="viewmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id="rowtblview" class="modal-dialog modal-dialog1 modal-lg modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-center">
+                <h5 class="modal-title" style="color: white" id="exampleModalLongTitle">Daily Production View</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="printformtable" class="mt-5 table table-striped table-bordered ">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <tbody>
+                            <tr>
+                                <th>Production Order :</th>
+                                <td id="tblproductionorder"></td>
+                            </tr>
+                            <tr>
+                                <th>Product :</th>
+                                <td id="tblproduct"></td>
+                            </tr>
+                            <tr>
+                                <th>Order Quantity :</th>
+                                <td id="tblorderqty"></td>
+                            </tr>
+                            <tr>
+                                <th>Current Quantity :</th>
+                                <td id="tblcrntqty"></td>
+                            </tr>
+                            <tr>
+                                <th>Daily Quantity :</th>
+                                <td id="tbldailyqty"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Quantity :</th>
+                                <td id="tbltotalqty"></td>
+                            </tr>
+                            <tr>
+                                <th>Balance Quantity :</th>
+                                <td id="tblbalanceqty"></td>
+                            </tr>
+                            <tr>
+                                <th>Added Date :</th>
+                                <td id="tbladdeddate"></td>
+                            </tr>
+                            <tr>
+                                <th>Employee :</th>
+                                <td id="tblemployee"></td>
+                            </tr>
+                            </tbody>
+                        </div>
+                    </div>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="btnPrintrow()">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

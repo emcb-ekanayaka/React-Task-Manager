@@ -1,0 +1,254 @@
+.glow {
+    color: #7294ff;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #7294ff, 0 0 20px #7294ff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+
+    to {
+        text-shadow: 0 0 20px #7294ff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+.bg-innersymbol{
+    background-color: #17a2b8;
+}
+.navbar {
+    width: 100%;
+    background-color: #555;
+}
+
+.innermasserposition{
+    position:absolute;
+    bottom:0;
+    right:0;
+    width: 20%;
+    margin-right: 15px;
+    background-color: #e2e1e1;
+}
+.innermasserposition2{
+    position:absolute;
+    bottom:0;
+    right:0;
+    width: 30%;
+    margin-right: 15px;
+    background-color: #e2e1e1;
+}
+.swal-button {
+    padding: 7px 19px;
+    border-radius: unset;
+    font-size: 10px;
+    border: 1px solid #ffffff;
+}
+.swal-title {
+     color: rgb(100, 102, 102);
+    font-weight: 600;
+    text-transform: none;
+    position: relative;
+    display: block;
+    font-size: 27px;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#mainwindowbarcolor{
+    background-color: rgb(16, 16, 30);
+    box-shadow: 0 8px 8px -4px #7294ff;
+}
+.naviconcommoncolors{
+    background-color: rgb(25, 155, 214);
+    color: white;
+}
+
+.naviconcommoncolors:hover{
+    color: #000a52;
+}
+/* Validation Colors for Input Controls */
+
+#ncolor{
+    background-color: rgb(16, 16, 30);
+}
+
+.nav-link{
+    color: white;
+    /*background-color: #646666;*/
+    border: white;
+}
+
+.bg-primary{
+    background-color: #3498db;
+}
+
+.form-text{
+    color: #3498db;
+}
+select option {
+    background: rgb(52, 152, 219);
+    color: #0a0000;
+    text-shadow: 0 1px 0 rgb(255, 224, 0);
+}
+select option:first-child{
+    color: #fafafa;
+}
+
+label{
+    color: #3498db;
+}
+input[type=text],input[type=date]  ,select, textarea{
+   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04), 0 6px 20px 0 rgba(0, 0, 0, 0.07);
+    border-radius: unset;
+}
+
+
+.rowbcolor{
+    margin-top: 5px;
+    border-bottom: 2px solid #005cbf;
+}
+
+.cbody{
+    overflow: hidden;
+    transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out;
+}
+
+.formcontent{
+    border: 2px solid #3498db;
+    background-color: rgb(255, 255, 255);
+}
+.cardhead{
+    background-color: #3498db;
+}
+.cardstyle{
+    border: 2px solid #646666;
+    background-color: rgb(52, 152, 219);
+}
+
+.formcardstyle{
+    border: 2px solid #646666;
+    background-color: rgb(255, 255, 255);
+}
+.cardformstyle{
+    border: 2px solid #646666;
+    background-color: rgb(255, 255, 255);
+}
+
+.tblbtnprint {
+    color: #acd8ff;
+    box-shadow: 0 0 40px 40px #646666 inset, 0 0 0 0 rgb(248, 212, 0);
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+.tblbtnprint:hover {
+    box-shadow: 0 0 10px 0 #000000 inset, 0 0 10px 4px #000000;
+}
+
+.commonadd {
+    background-color: #646666;
+    border-radius: 0;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.commonadd:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: #000000;
+    z-index: -1;
+    -webkit-transition: width 150ms ease-in-out;
+    transition: width 150ms ease-in-out;
+}
+.commonadd:hover {
+    color: #fff;
+}
+.commonadd:hover:after {
+    width: 110%;
+}
+
+
+body::-webkit-scrollbar{
+    border-radius: unset;
+    background-image: linear-gradient(rgba(19, 130, 243, 0.93), rgba(212, 255, 254, 0.68));
+}
+body::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+
+
+
+.invalid .form-control{
+    background-color: pink;
+}
+.valid .form-control{
+    background-color: lightgreen;
+}
+.updated .form-control{
+    background-color: khaki;
+}
+
+
+.file-box{
+    height: 87px;
+    margin-bottom: 7px;
+    border:1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+
+.file-box>img{
+    position: absolute;
+    height: 75px;
+    top: 5px;
+    left: 5px;
+}
+
+.file-box>ul{
+    position: absolute;
+    top: 5px;
+    left: 87px;
+    right: 5px;
+    padding: 0px;
+    list-style: none;
+    color: rgba(85, 85, 85, 0.36);
+    text-align: right;
+}
+
+
+/* Profile Image */
+
+.bntVisibity{
+    cursor: not-allowed;
+}
+
+
+.profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.scrollStyle {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.scrollStyle::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
